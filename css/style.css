@@ -1,0 +1,242 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.head-container{
+    
+    position: relative;
+    background: rgb(158, 231, 140);
+    background: rgba(140, 179, 231, 0.4);
+    
+}
+.head-containersignup{
+    
+    position: relative;
+    background: rgb(158, 231, 140);
+    background: rgb(140, 179, 231);
+    
+}
+.carousal-main{
+    height: auto;
+}
+.hovhov{
+    border-radius: 15px;
+    padding: 9px;
+    border: 5px;
+    margin: 3px;
+}
+.hovhov:hover{
+    background-color: rgb(53, 52, 41);
+    border-radius: 15px;
+    border: 2px solid rgb(115, 100, 131);
+    color: black;
+    padding: 9px;
+    border: 5px;
+    margin: 3px;
+    transition: 3s;
+}
+
+.img-opacity{
+    opacity: 0.3;
+    position: absolute;
+    width: 100%;
+    height: auto;
+}
+
+.captionbg{
+    border-radius: 20px;
+}
+.captionbg:hover{
+    background: rgb(22, 22, 21);
+    background: rgba(17, 17, 16, 0.3);
+    border-radius: 20px;
+    transition: 2s;
+}
+
+.login-button{
+    margin:6px;padding :6px;text-decoration: none;
+    border-radius: 5px; border:1px solid green
+}
+.login-button:hover{
+    background-color: green;
+    color: ivory;
+}
+
+.cont-container{
+    
+    position: relative;
+    height: 200px;
+    margin-bottom: 5px;
+}
+
+.containerattractions{    
+ overflow: hidden; 
+ margin-top: 50px;
+ position: relative;
+ height: auto;
+ 
+}
+.attractholder{
+    background-image: url(../images/sky-1.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.headattract{
+position: relative;
+text-align: center;
+color: white;
+}
+.headattractmain{
+    position: relative;
+    text-align: center;
+    color: rgb(15, 15, 15);
+    }
+
+.overlay {
+    position: absolute;
+    
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    width: 100%;
+    height:25%;
+    transition: .5s ease;
+    font-size: 14px;
+    padding: 20px;
+    text-align: center;
+    color: honeydew;
+  }
+  
+  .cont-container:hover .overlay {
+    bottom: 0;
+    height: 100%;
+  }
+  .keralapic{
+      background-image:url(../images/map.jpg);
+      background-repeat: no-repeat;
+      background-size:15%;
+      
+  }
+
+
+.overlay-dist {
+    position: absolute;    
+    bottom: 0%;
+    left: 0;
+    right: 0;    
+    margin-left: 10px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    width: 92%;
+    height:26%;
+    transition: .5s ease;
+    font-size: 14px;
+    padding: 15px;
+    text-align: center;
+    color: honeydew;
+  }
+  
+  .cont-container:hover .overlay-dist {
+    bottom: 0;
+    height: 100%;
+  }
+
+
+/*-- districts page */
+  .rowdists{    
+    overflow: hidden; 
+    margin-top: 50px;
+    position: relative;
+    
+   }
+
+   .headdist{
+    position: relative;
+    text-align: center;
+    margin-top: 100px;
+
+    }
+    .head-dist-container{
+    
+        position: relative;
+        background: rgb(158, 231, 140);
+        background: rgb(140, 179, 231);
+        
+    }
+    
+    .overlay-dist a{
+        text-decoration: none;
+        color: white;
+    }
+    
+.rowdistdetail{
+    margin: 30px;
+    font-size: 11px;
+}
+
+.breadcustom{
+    background-color: rgb(219, 219, 219);
+}
+
+.dist-detail-page{
+    position: relative;
+    border-radius: 15px;
+    background: linear-gradient(to bottom, #eff5eb 0%, #ddecd5 100%);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 10px;
+    border-top: 220px;
+    border-bottom: 1px solid rgb(207, 206, 206);
+}
+
+
+.headcard{
+    padding: 10px;
+    border-radius: 20px;
+    background: linear-gradient(to left, #ffffff 0%, #cae9b9 100%);
+}
+.card-custom-r{
+    border-left: 2px solid rgb(240, 240, 186);
+    border-bottom: 2px solid rgb(240, 240, 186);
+    height: 100%;
+    text-align: justify;
+}
+.card-custom-r p::first-letter {
+    font-size: 200%;
+    margin-left: 18px;
+    color: #8A2BE2;
+  }
+
+.card-custom-l{
+    border-right: 2px solid rgb(240, 240, 186);
+    border-bottom: 2px solid rgb(240, 240, 186);
+    height: 100%;
+    text-align: justify;
+}
+.card-custom-l p::first-letter {
+    font-size: 200%;
+    margin-left: 18px;
+    color: #8A2BE2;
+  }
+.signup_box{
+    position: relative;
+    margin-top: 100px;
+   
+    
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(229, 226, 226);
+    color: rgb(41, 41, 40);
+    text-align: center;
+    margin-top: 30px;
+    position: relative;
+ }
