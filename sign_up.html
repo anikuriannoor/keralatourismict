@@ -87,7 +87,7 @@
     <div class="container signup_box col-xl-6">
         <h3>Sign Up</h3>
         <p>Please fill this form to create a new user account</p>
-        <form action="https://google.com" onsubmit="validate()">
+        <form action="index.html" onsubmit="return validate()">
           <div class="form-group">
             <div class="  input-group my-4 ">
               <input type="text" class="form-control " id="firstname" required placeholder="First Name">
@@ -98,11 +98,16 @@
 
             <div class="form-group">
               
-              <input type="email" class="form-control" required id="InputEmail1" aria-describedby="emailHelp" placeholder="Email Address (Email address will be your username)">
+              <input id="email" type="email" class="form-control" required id="InputEmail1" aria-describedby="emailHelp" placeholder="Email Address (Email address will be your username)">
               <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <br>
-
+            <div class="form-group">
+              
+              <input id="phoneno" type="text" class="form-control" required   aria-describedby="phoneHelp" placeholder="Phone Number">
+              <small id="phoneHelp" class="form-text text-muted">Input an Phone No.[xxx-xxx-xxxx, xxx.xxx.xxxx, xxx xxx xxxx].</small>
+            </div>
+            <br>
             
             
             
@@ -128,7 +133,7 @@
                 Terms and Conditions</a></label>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button id="submit" class="btn btn-primary">Submit</button>
           </div>
           </form>
 
@@ -144,18 +149,19 @@
     </footer>
     
     <div class="form-popup" id="myForm">
-      <form action="#" class="form-container">
+      <form action="index.html" class="form-container" onsubmit="return validate_login()">
         <h1>Login</h1>
     
         <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" required>
+        <input id="emaillogin" type="email"  pattern="/^([A-Za-z0-9\.-]+)@([A-Za-z0-9\-]+).([a-z]{2,3})(.[a-z]{2,3})?$/" required   placeholder="Email Address">
     
         <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-    
-        <button type="submit" class="btn">Login</button>
-        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter Password" id="logpsw" required> 
+
+        <button id="submit" class="btn">Login</button>
+        
       </form>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
     </div>
     <script>
       function openlogin() {
@@ -183,10 +189,6 @@
           }
 
           
-          // var letter = document.getElementById("letter");
-          // var capital = document.getElementById("capital");
-          // var number = document.getElementById("number");
-          // var length = document.getElementById("length");
           var myInput = document.getElementById("psw");
           var myInputconfirm = document.getElementById("InputPassword1confirm");
           
@@ -197,10 +199,7 @@
 
           // When the user clicks outside of the password field, hide the message box
           myInput.onblur = function() {
-            // if (myInput.value == ""){
-            //   pwtext.innerHTML= "";
-            // }
-            // document.getElementById("message").style.display = "none";
+            
           }
 
           // When the user starts to type something inside the password field
@@ -209,10 +208,12 @@
             if(myInputconfirm.value !== myInput.value)
             {
               myInputconfirm.style.border = "2px solid red";
+              return false;
 
             }
             else{
-              myInputconfirm.style.border="None";
+              myInputconfirm.style.border="1px solid #ced4da";
+              return true;
             }
           }
 
@@ -273,12 +274,12 @@
                 meter.value = strength;
                 pwtext.innerHTML = "Password Strength: " + strengthval[strength]; 
               } else{
-                pwhintval=pwhintval+"#Password Length#  ";
+                pwhintval=pwhintval+"#Password Length (8)#  ";
               }
               console.log(strength);
               if(strength<4){
                 // pwhint.setAttribute("hidden",false);
-                pwhint.innerHTML =pwhintval + "Criteria Mismatch";
+                pwhint.innerHTML =" Must Have <b>"+ pwhintval + "</b>in the password";
                 pwhint.style.color="green"
               }
               else{
@@ -305,22 +306,81 @@
                 let returnval;
                 if(myInputconfirm.value !== myInput.value)
                   {
-                  console.log("herehere")
-                  alert("hhhhh")
+                  console.log("herehere");
+                  // alert("hhhhh");
                   myInputconfirm.style.border = "2px solid red";
-                  returnval =false;
-                  }else{
-                  myInputconfirm.style.border="None";
-                  returnval= true;
+                  // returnval =false;
+                  return false;
                   }
-                  
-
-              return returnval;
+                  else{
+                    myInputconfirm.style.border="1px solid #ced4da";
+                    var chkbx=document.getElementById("termsCheck1");
+                    // alert(chkbx.checked);
+                    if(phonenumber() && emailvalidate() && chkbx.checked )
+                    // returnval= true;
+                        return true;
+                      else
+                        return false;
+                  // alert("okokok");
+                  }
               }
+
+              
         }
+        var phonenum=document.getElementById("phoneno");
+        phonenum.addEventListener("keyup", phonenumber);
+        function phonenumber()
+              
+              {
+                
+                var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+                if(phonenum.value.match(phoneno))
+                  {
+                  phonenum.style.border="1px solid #ced4da";
+                  return true;
+                }
+                else
+                  {                    
+                  phonenum.style.border="2px solid red";
+                  return false;
+                  }
+              }
+          var emailval=document.getElementById("email");
+          emailval.addEventListener("keyup", emailvalidate);      
+            function emailvalidate()              
+              {
+                
+                var emailreg = /^([A-Za-z0-9\.-]+)@([A-Za-z0-9\-]+).([a-z]{2,3})(.[a-z]{2,3})?$/;
+                if(emailval.value.match(emailreg))
+                  {
+                  emailval.style.border="1px solid #ced4da";
+                  return true;
+                }
+                else
+                  {                    
+                  emailval.style.border="2px solid red";
+                  return false;
+                  }
+              }
 
-
-
+              //Not working need to check
+              var emaillog=document.getElementById("emaillogin");
+              emaillog.addEventListener("keyup", validate_login);
+              function validate_login()              
+              {
+                // alert("hhhhh")
+                var emaillogreg = /^([A-Za-z0-9\.-]+)@([A-Za-z0-9\-]+).([a-z]{2,3})(.[a-z]{2,3})?$/;
+                if(emaillog.value.match(emaillogreg))
+                  {
+                    emaillog.style.border="1px solid #ced4da";
+                  return true;
+                }
+                else
+                  {                    
+                    emaillog.style.border="2px solid red";
+                  return false;
+                  }
+              }
       </script>
 </body>
 </html>
